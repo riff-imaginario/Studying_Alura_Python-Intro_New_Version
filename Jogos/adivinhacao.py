@@ -7,7 +7,7 @@ tentativas     = 3
 rodada         = 1
 
 while(rodada <= tentativas):
-    print('Tentativas:', rodada, 'de', tentativas)
+    print('Tentativas: {0} de {1}'.format(rodada, tentativas))
     chute = int(input('Digite o seu número: '))
 
     acertou = chute == numero_secreto
