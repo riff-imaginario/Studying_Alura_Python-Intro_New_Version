@@ -7,6 +7,7 @@ print('*********************************')
 
 numero_secreto = r.randrange(1, 101)
 tentativas     = 3
+pontos         = 1000
 
 print('Qual nível de dificuldade?')
 print('(1) Fácil\t(2) Médio\t(3) Difícil')
@@ -33,12 +34,14 @@ for rodada in range(1, tentativas + 1):
     menor   = chute < numero_secreto
 
     if(acertou):
-        print('Você acertou')
+        print('Você acertou e fez {} pontos'.format(pontos))
         break  # sai do loop
     else:
         if(maior):
             print('Você errou! Seu número foi maior do que o número secreto.')
         elif(chute < numero_secreto):
             print('Você errou! Seu número foi menor do que o número secreto.')
+            pontos_perdidos = abs(numero_secreto - chute)  # valor absoluto, sempre positivo
+        pontos -= pontos_perdidos
 
 print('Fim do jogo')
