@@ -3,23 +3,32 @@ def jogar():
     print("Bem-vindo ao jogo de forcaforca.py!")
     print('*********************************')
 
-    palavra_secreta  = 'banana'
+    palavra_secreta  = 'banana'.upper()
     letras_acertadas = ['_', '_', '_', '_', '_', '_']
+    erros            = 0
 
     enforcou = False
     acertou  = False
 
     while(not enforcou and not acertou):
-        chute = input('Qual letra? ').strip()
+        chute = input('Qual letra? ').strip().upper()
         index = 0
 
-        for letra in palavra_secreta:
-            if(chute.upper() == letra.upper()):
-                letras_acertadas[index] = letra
-            index += 1
+        if(chute in palavra_secreta):  # Verifica se a letra está correta
+            for letra in palavra_secreta:
+                if(chute.upper() == letra.upper()):
+                    letras_acertadas[index] = letra
+                index += 1
+        else:
+            erros += 1
 
-        print(letras_acertadas)
+        enforcou = erros == 6
+        acertou  = '_' not in letras_acertadas
 
+    if(acertou):
+        print('Você ganhou!')
+    else:
+        print('Você perdeu!')
 
     print('Fim do jogo')
 
