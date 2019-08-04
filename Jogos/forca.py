@@ -1,7 +1,6 @@
-print('*********************************')
-print("Bem-vindo ao jogo de forcaforca.py!")
-print('*********************************')
+def jogar():
+    print('*********************************')
+    print("Bem-vindo ao jogo de forcaforca.py!")
+    print('*********************************')
 
-
-
-print('Fim do jogo')
+    print('Fim do jogo')
