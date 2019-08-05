@@ -6,9 +6,8 @@ def jogar():
     print("Bem-vindo ao jogo de forcaforca.py!")
     print('*********************************')
 
-    arquivo  = open('palavras.txt', 'r')
-    palavras = [linha.strip() for linha in arquivo]
-    arquivo.close()
+    with open('palavras.txt') as arquivo:
+        palavras = [linha.strip() for linha in arquivo]
 
     # Sorteando a palavra secreta
     numero = random.randrange(0, len(palavras))
