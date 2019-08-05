@@ -1,16 +1,29 @@
+import random
+
+
 def jogar():
     print('*********************************')
     print("Bem-vindo ao jogo de forcaforca.py!")
     print('*********************************')
 
-    palavra_secreta  = 'banana'.upper()
+    arquivo  = open('palavras.txt', 'r')
+    palavras = [linha.strip() for linha in arquivo]
+    arquivo.close()
+
+    # Sorteando a palavra secreta
+    numero = random.randrange(0, len(palavras))
+    palavra_secreta  = palavras[numero].upper()
+
     letras_acertadas = ['_' for letra in palavra_secreta]
     erros            = 0
     enforcou = False
     acertou  = False
 
+    print(letras_acertadas)
+
     while(not enforcou and not acertou):
         chute = input('Qual letra? ').strip().upper()
+
         index = 0
 
         if(chute in palavra_secreta):  # Verifica se a letra está correta
@@ -23,6 +36,8 @@ def jogar():
 
         enforcou = erros == 6
         acertou  = '_' not in letras_acertadas
+
+        print(letras_acertadas)
 
     if(acertou):
         print('Você ganhou!')
